@@ -79,7 +79,7 @@ FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
 
-2. **Retrieve all Clothing category transactions where more than four units were sold during November 2022.**
+2. **Retrieve all Clothing category transactions where more than 4 units were sold during November 2022.**
 
 ```sql
 SELECT 
@@ -88,9 +88,9 @@ FROM retail_sales
 WHERE 
     category = 'Clothing'
     AND 
-    TO_CHAR(sale_date, 'YYYY-MM') = '2022-11'
+    quantiy >= 4
     AND
-    quantity >= 4
+	DATE_FORMAT(sale_date, '%b-%Y') = 'Nov-2022';
 ```
 
 3. **Calculate the total sales amount for each product category.**
