@@ -18,7 +18,7 @@ This project demonstrates the fundamental SQL techniques used by data analysts t
 
 ### 1. Database Setup
 
-* **Database Creation**: Begin by creating a database named `p1_retail_db`.
+* **Database Creation**: Begin by creating a database named `p_sales_retails`.
 * **Table Creation**: Create a table called `retail_sales` to store the retail sales records. The table contains fields for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sales amount.
 
 ```sql
