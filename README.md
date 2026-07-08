@@ -22,7 +22,7 @@ This project demonstrates the fundamental SQL techniques used by data analysts t
 * **Table Creation**: Create a table called `retail_sales` to store the retail sales records. The table contains fields for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sales amount.
 
 ```sql
-CREATE DATABASE p1_retail_db;
+CREATE DATABASE p_sales_retails;
 
 CREATE TABLE retail_sales
 (
