@@ -9,7 +9,7 @@ CREATE TABLE retail_sales
         gender VARCHAR(15),
         age	INT,
         category VARCHAR(15),
-        quantiy	INT,
+        quantity INT,
         price_per_unit FLOAT,
         cogs FLOAT,
         total_sale INT
@@ -36,7 +36,7 @@ WHERE transactions_id IS NULL
         OR
         category IS NULL
         OR
-        quantiy IS NULL
+        quantity IS NULL
         OR
         price_per_unit IS NULL 
         OR
@@ -76,7 +76,7 @@ FROM retail_sales
 WHERE 
     category = 'Clothing'
     AND 
-    quantiy >= 4
+    quantity >= 4
     AND
 	DATE_FORMAT(sale_date, '%b-%Y') = 'Nov-2022';
     
