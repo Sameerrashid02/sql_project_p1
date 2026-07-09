@@ -148,11 +148,11 @@ SELECT
     EXTRACT(YEAR FROM sale_date) as year,
     EXTRACT(MONTH FROM sale_date) as month,
     AVG(total_sale) as avg_sale,
-    RANK() OVER(PARTITION BY EXTRACT(YEAR FROM sale_date) ORDER BY AVG(total_sale) DESC) as rank
+    RANK() OVER(PARTITION BY EXTRACT(YEAR FROM sale_date) ORDER BY AVG(total_sale) DESC) as rnk
 FROM retail_sales
 GROUP BY year, month
 ) as t1
-WHERE rank = 1
+WHERE rnk = 1;
 ```
 
 8. **Identify the top five customers based on their total purchase value.**
@@ -162,8 +162,8 @@ SELECT
     customer_id,
     SUM(total_sale) as total_sales
 FROM retail_sales
-GROUP BY 1
-ORDER BY 2 DESC
+GROUP BY customer_id
+ORDER BY total_sales DESC
 LIMIT 5
 ```
 
