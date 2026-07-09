@@ -81,10 +81,12 @@ WHERE
 	DATE_FORMAT(sale_date, '%b-%Y') = 'Nov-2022';
     
 -- Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
-SELECT category, SUM(total_sale) as net_sale, 
+SELECT 
+	category, 
+	SUM(total_sale) as net_sale, 
 	COUNT(*) as total_orders
     FROM retail_sales
-    GROUP BY 1;
+    	GROUP BY category;
 
 -- Q.4 Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.
 SELECT ROUND(AVG(age),2) AS avg_age FROM retail_sales WHERE category = 'Beauty';
@@ -93,10 +95,12 @@ SELECT ROUND(AVG(age),2) AS avg_age FROM retail_sales WHERE category = 'Beauty';
 SELECT * FROM retail_sales WHERE total_sale <1000;
 
 -- Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
-SELECT gender,category, COUNT(transactions_id)AS total_trans FROM retail_sales GROUP BY gender, category ORDER BY 1;
+SELECT gender,category, COUNT(transactions_id) AS total_trans FROM retail_sales GROUP BY gender, category ORDER BY gender;
 
 -- Q.7 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year? 
-SELECT year, month, 
+SELECT
+	year,
+	month, 
 	avg_sale
 FROM 
 (    
@@ -104,9 +108,9 @@ SELECT
     EXTRACT(YEAR FROM sale_date) as year,
     EXTRACT(MONTH FROM sale_date) as month,
     AVG(total_sale) as avg_sale,
-    RANK() OVER(PARTITION BY EXTRACT(YEAR FROM sale_date) ORDER BY AVG(total_sale) DESC) as RNK
+    RANK() OVER(PARTITION BY EXTRACT(YEAR FROM sale_date) ORDER BY AVG(total_sale) DESC) as rnk
 FROM retail_sales
-GROUP BY 1, 2
+GROUP BY year, month
 ) as t1
 WHERE rnk= 1;
 
