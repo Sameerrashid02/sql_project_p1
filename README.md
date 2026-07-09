@@ -101,7 +101,7 @@ SELECT
     SUM(total_sale) as net_sale,
     COUNT(*) as total_orders
 FROM retail_sales
-GROUP BY 1
+GROUP BY category
 ```
 
 4. **Find the average age of customers who purchased products from the 'Beauty' category.**
@@ -132,7 +132,7 @@ GROUP
     BY 
     category,
     gender
-ORDER BY 1
+ORDER BY category
 ```
 
 7. **Determine the average monthly sales and identify the highest-performing month for each year.**
@@ -150,7 +150,7 @@ SELECT
     AVG(total_sale) as avg_sale,
     RANK() OVER(PARTITION BY EXTRACT(YEAR FROM sale_date) ORDER BY AVG(total_sale) DESC) as rank
 FROM retail_sales
-GROUP BY 1, 2
+GROUP BY year, month
 ) as t1
 WHERE rank = 1
 ```
